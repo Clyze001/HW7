@@ -106,7 +106,9 @@ public:
                 file1.close();
             }
             else{
-                cout << target;
+                ai_free(ptr);
+                delete[]target;
+                exit(1);
             }
             ai_free(ptr);
             delete[]target;
@@ -159,7 +161,9 @@ public:
                 file1.close();
             }
             else{
-                cout << target;
+                ai_free(ptr);
+                delete[]target;
+                exit(1);
             }
             ai_free(ptr);
             delete[]target;
