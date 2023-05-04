@@ -56,13 +56,13 @@ public:
             else{
                 cout << target;
             }
-            ai_free(Chat_ai::ptr);
+            ai_free(ptr);
             delete[]target;
             delete[]prompt;
             delete[]file_name;
         }
         else{
-            ai_free(Chat_ai::ptr);
+            ai_free(ptr);
             delete[]target;
             delete[]prompt;
             delete[]file_name;
@@ -112,13 +112,13 @@ public:
             else{
                 cout << target;
             }
-            ai_free(Draw_ai::ptr);
+            ai_free(ptr);
             delete[]target;
             delete[]prompt;
             delete[]file_name;
         }
         else{
-            ai_free(Draw_ai::ptr);
+            ai_free(ptr);
             delete[]target;
             delete[]prompt;
             delete[]file_name;
@@ -169,13 +169,13 @@ public:
             else{
                 cout << target;
             }
-            ai_free(Math_ai::ptr);
+            ai_free(ptr);
             delete[]target;
             delete[]prompt;
             delete[]file_name;
         }
         else{
-            ai_free(Math_ai::ptr);
+            ai_free(ptr);
             delete[]target;
             delete[]prompt;
             delete[]file_name;
