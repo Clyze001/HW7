@@ -185,7 +185,7 @@ public:
 };
 
 AI* Parser::parse(int argc, char**argv){
-    if(argc == 3){
+    /*if(argc == 3){
         int flag = 0;
         if(argv[1][0] == '-') flag = 1;
         else flag = 2;
@@ -200,13 +200,13 @@ AI* Parser::parse(int argc, char**argv){
             return k;
         }
         else exit(1);
-    }
-    else if(argc == 5){
+    }*/
+    if(true){
         int flag1 = 0;//记录接入接口的位置
-        int type1 = 0;//0代表math，1代表draw
+        int type1 = 0;//0代表math，1代表draw，2代表chatgpt
         int flag2 = 0;//记录文件输入的位置
         bool if_file = 0;
-        for(int i = 1; i <= 4; i++){
+        for(int i = 1; i <= argc - 1; i++){
             if(argv[i][0] == '-' && argv[i][1] == '-' && argv[i][2] == 'd'){
                 flag1 = i;
                 type1 = 1;
@@ -218,6 +218,10 @@ AI* Parser::parse(int argc, char**argv){
             if(argv[i][0] == '-' && argv[i][1] == 'o'){
                 flag2 = i;
                 if_file = 1;
+            }
+            if(argv[i][0] == '-' && argv[i][1] == '-' && argv[i][2] == 'c'){
+                flag1 = i;
+                type1 = 2;
             }
         }
         if(type1 == 1){
@@ -231,6 +235,15 @@ AI* Parser::parse(int argc, char**argv){
         }
         if(type1 == 0){
             Math_ai* k{};
+            k->prompt = argv[flag1 + 1];
+            if(if_file){
+                k->file_name = argv[flag2 + 1];
+                k->file = 1;
+            }
+            return k;
+        }
+        if(type1 == 2){
+            Chat_ai* k{};
             k->prompt = argv[flag1 + 1];
             if(if_file){
                 k->file_name = argv[flag2 + 1];
