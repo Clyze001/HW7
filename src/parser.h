@@ -215,7 +215,7 @@ AI* Parser::parse(int argc, char**argv){
                 flag1 = i;
                 type1 = 0;
             }
-            if(argv[i][0] == '-' && argv[i][1] == 'o'){
+            if((argv[i][0] == '-' && argv[i][1] == 'o')||(argv[i][0] == '-' && argv[i][1] == '-' && argv[i][2] == 'o')){
                 flag2 = i;
                 if_file = 1;
             }
