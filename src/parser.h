@@ -25,8 +25,8 @@ public:
     RJSJAI* ptr;
     //构造函数
     Chat_ai(){
-        prompt = new char[600];
-        file_name = new char[600];
+        char prompt[600] = {};
+        char file_name[600] = {};
         ptr = ai_create(token);
     }
     //复制构造函数
@@ -57,16 +57,12 @@ public:
             else{
                 cout << target;
             }
-            //ai_free(ptr);
+            ai_free(ptr);
             delete[]target;
-            delete[]prompt;
-            delete[]file_name;
         }
         else{
-            //ai_free(ptr);
+            ai_free(ptr);
             delete[]target;
-            delete[]prompt;
-            delete[]file_name;
             exit(1);
         }
     }
@@ -80,8 +76,8 @@ public:
     RJSJAI* ptr;
     //构造函数
     Draw_ai(){
-        prompt = new char[600];
-        file_name = new char[600];
+        char prompt[600] = {};
+        char file_name[600] = {};
         file = 0;
         ptr = ai_create(token);
     }
@@ -105,24 +101,19 @@ public:
             target = new char[num];
             ai_result(ptr, target);
             if(file){
-                ofstream file1;
-                file1.open(file_name);
-                file1 << target;
+                ofstream file1(file_name, ios::binary);
+                file1.write(target, num);
                 file1.close();
             }
             else{
                 cout << target;
             }
-            //ai_free(ptr);
+            ai_free(ptr);
             delete[]target;
-            delete[]prompt;
-            delete[]file_name;
         }
         else{
-            //ai_free(ptr);
+            ai_free(ptr);
             delete[]target;
-            delete[]prompt;
-            delete[]file_name;
             exit(1);
         }
     }
@@ -137,8 +128,8 @@ public:
     RJSJAI* ptr;
     //构造函数
     Math_ai(){
-        prompt = new char[600];
-        file_name = new char[600];
+        char* prompt;
+        char* file_name;
         file = 0;
         ptr = ai_create(token);
     }
@@ -170,16 +161,12 @@ public:
             else{
                 cout << target;
             }
-            //ai_free(ptr);
+            ai_free(ptr);
             delete[]target;
-            delete[]prompt;
-            delete[]file_name;
         }
         else{
-            //ai_free(ptr);
+            ai_free(ptr);
             delete[]target;
-            delete[]prompt;
-            delete[]file_name;
             exit(1);
         }
     }
