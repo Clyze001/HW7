@@ -4,6 +4,7 @@
 #include "rjsjai.h"
 #include <iostream>
 #include <fstream>
+#include <string.h>
 using namespace std;
 
 const char* token = "e31ef101-d948-4f0c-9f31-9d2a825d5ea6";
@@ -190,19 +191,19 @@ AI* Parser::parse(int argc, char**argv){
         int flag2 = 0;//记录文件输入的位置
         bool if_file = 0;//记录是否有文件输出
         for(int i = 1; i <= argc - 1; i++){
-            if(argv[i][0] == '-' && argv[i][1] == '-' && argv[i][2] == 'd'){
+            if(strcmp("--draw", argv[i]) == 0){
                 flag1 = i;
                 type1 = 1;
             }
-            if(argv[i][0] == '-' && argv[i][1] == '-' && argv[i][2] == 'm'){
+            if(strcmp("--math", argv[i]) == 0){
                 flag1 = i;
                 type1 = 0;
             }
-            if((argv[i][0] == '-' && argv[i][1] == 'o')||(argv[i][0] == '-' && argv[i][1] == '-' && argv[i][2] == 'o')){
+            if((strcmp("--output", argv[i]) == 0)||(strcmp("-o", argv[i]) == 0)){
                 flag2 = i;
                 if_file = 1;
             }
-            if(argv[i][0] == '-' && argv[i][1] == '-' && argv[i][2] == 'c'){
+            if(strcmp("--chat", argv[i]) == 0){
                 flag1 = i;
                 type1 = 2;
             }
