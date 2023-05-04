@@ -182,21 +182,21 @@ AI* Parser::parse(int argc, char**argv){
         int flag2 = 0;//记录文件输入的位置
         bool if_file = 0;//记录是否有文件输出
         for(int i = 1; i <= argc - 1; i++){
-            if(strcmp("--draw", argv[i]) == 0){
+            if(strcmp("--draw", argv[i]) == 0 && argv[i + 1][0] != '-'){
                 flag1 = i;
                 type1 = 1;
             }
-            if(strcmp("--math", argv[i]) == 0){
+            if(strcmp("--math", argv[i]) == 0 && argv[i + 1][0] != '-'){
                 flag1 = i;
                 type1 = 0;
             }
-            if((strcmp("--output", argv[i]) == 0)||(strcmp("-o", argv[i]) == 0)){
-                flag2 = i;
-                if_file = 1;
-            }
-            if(strcmp("--chat", argv[i]) == 0){
+            if(strcmp("--chat", argv[i]) == 0 && argv[i + 1][0] != '-'){
                 flag1 = i;
                 type1 = 2;
+            }
+            if(((strcmp("--output", argv[i]) == 0)||(strcmp("-o", argv[i]) == 0)) && argv[i + 1][0] != '-'){
+                flag2 = i;
+                if_file = 1;
             }
         }
         if(type1 == 1 && flag1 != 0){
