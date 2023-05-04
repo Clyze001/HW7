@@ -194,7 +194,7 @@ AI* Parser::parse(int argc, char**argv){
                 flag1 = i;
                 type1 = 1;
             }
-            if(argv[i][0] == '-' && argv[i][1] == '-' && argv[i][2] == 'd'){
+            if(argv[i][0] == '-' && argv[i][1] == '-' && argv[i][2] == 'm'){
                 flag1 = i;
                 type1 = 0;
             }
