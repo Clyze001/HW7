@@ -181,22 +181,28 @@ AI* Parser::parse(int argc, char**argv){
         int type1 = 0;//0代表math，1代表draw，2代表chatgpt
         int flag2 = 0;//记录文件输入的位置
         bool if_file = 0;//记录是否有文件输出
+        int cnt1 = 0;
+        int cnt2 = 0;
         for(int i = 1; i <= argc - 1; i++){
             if(strcmp("--draw", argv[i]) == 0 && argv[i + 1][0] != '-'){
                 flag1 = i;
                 type1 = 1;
+                cnt1++;
             }
             if(strcmp("--math", argv[i]) == 0 && argv[i + 1][0] != '-'){
                 flag1 = i;
                 type1 = 0;
+                cnt1++;
             }
             if(strcmp("--chat", argv[i]) == 0 && argv[i + 1][0] != '-'){
                 flag1 = i;
                 type1 = 2;
+                cnt1++;
             }
             if(((strcmp("--output", argv[i]) == 0)||(strcmp("-o", argv[i]) == 0)) && argv[i + 1][0] != '-'){
                 flag2 = i;
                 if_file = 1;
+                cnt2++;
             }
             if(argv[i][0] == '-' && strcmp("--draw", argv[i]) != 0 && strcmp("--math", argv[i]) != 0 && strcmp("--chat", argv[i]) != 0 && strcmp("--output", argv[i]) != 0 && strcmp("-o", argv[i]) != 0){
                 exit(1);
@@ -204,7 +210,11 @@ AI* Parser::parse(int argc, char**argv){
             if((strcmp("--draw", argv[i]) == 0 || strcmp("--math", argv[i]) == 0 || strcmp("--chat", argv[i]) == 0 || strcmp("--output", argv[i]) == 0 || strcmp("-o", argv[i]) == 0) && argv[i + 1][0] == '-'){
                 exit(1);
             }
+            if((strcmp("--draw", argv[i]) == 0 || strcmp("--math", argv[i]) == 0 || strcmp("--chat", argv[i]) == 0 || strcmp("--output", argv[i]) == 0 || strcmp("-o", argv[i]) == 0) && argv[i + 2][0] != '-'){
+                exit(1);
+            }
         }
+        if(cnt1 > 1 && cnt2 > 1) exit(1);
         if(type1 == 1 && flag1 != 0){
             Draw_ai* k = new Draw_ai;
             k->prompt = argv[flag1 + 1];
