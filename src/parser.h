@@ -210,9 +210,6 @@ AI* Parser::parse(int argc, char**argv){
             if((strcmp("--draw", argv[i]) == 0 || strcmp("--math", argv[i]) == 0 || strcmp("--chat", argv[i]) == 0 || strcmp("--output", argv[i]) == 0 || strcmp("-o", argv[i]) == 0) && argv[i + 1][0] == '-'){
                 exit(1);
             }
-            if((strcmp("--draw", argv[i]) == 0 || strcmp("--math", argv[i]) == 0 || strcmp("--chat", argv[i]) == 0 || strcmp("--output", argv[i]) == 0 || strcmp("-o", argv[i]) == 0) && argv[i + 2][0] != '-'){
-                exit(1);
-            }
         }
         if(cnt1 > 1 && cnt2 > 1) exit(1);
         if(type1 == 1 && flag1 != 0){
