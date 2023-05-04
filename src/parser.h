@@ -211,7 +211,8 @@ AI* Parser::parse(int argc, char**argv){
                 exit(1);
             }
         }
-        if(cnt1 > 1 && cnt2 > 1) exit(1);
+        if(cnt1 > 1 || cnt2 > 1) exit(1);
+        if(argc > 2 * (cnt1 + cnt2) + 1) exit(1);
         if(type1 == 1 && flag1 != 0){
             Draw_ai* k = new Draw_ai;
             k->prompt = argv[flag1 + 1];
