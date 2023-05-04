@@ -61,13 +61,13 @@ public:
                 cout << target;
             }
         }
-        else{
+        /*else{
             ai_free(Chat_ai::ptr);
             delete[]target;
             delete[]prompt;
             delete[]file_name;
             exit(1);
-        }
+        }*/
     }
 };
 
@@ -117,13 +117,13 @@ public:
                 cout << target;
             }
         }
-        else{
+        /*else{
             ai_free(Draw_ai::ptr);
             delete[]target;
             delete[]prompt;
             delete[]file_name;
             exit(1);
-        }
+        }*/
     }
 };
 
@@ -174,13 +174,13 @@ public:
             delete[]prompt;
             delete[]file_name;
         }
-        else{
+        /*else{
             ai_free(Math_ai::ptr);
             delete[]target;
             delete[]prompt;
             delete[]file_name;
             exit(1);
-        }
+        }*/
     }
 };
 
