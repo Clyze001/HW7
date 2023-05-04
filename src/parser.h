@@ -54,20 +54,20 @@ public:
                 file1.close();
             }
             else{
-                ai_free(Chat_ai::ptr);
-                delete[]target;
-                delete[]prompt;
-                delete[]file_name;
                 cout << target;
             }
+            ai_free(Chat_ai::ptr);
+            delete[]target;
+            delete[]prompt;
+            delete[]file_name;
         }
-        /*else{
+        else{
             ai_free(Chat_ai::ptr);
             delete[]target;
             delete[]prompt;
             delete[]file_name;
             exit(1);
-        }*/
+        }
     }
 };
 
@@ -110,20 +110,20 @@ public:
                 file1.close();
             }
             else{
-                ai_free(Draw_ai::ptr);
-                delete[]target;
-                delete[]prompt;
-                delete[]file_name;
                 cout << target;
             }
+            ai_free(Draw_ai::ptr);
+            delete[]target;
+            delete[]prompt;
+            delete[]file_name;
         }
-        /*else{
+        else{
             ai_free(Draw_ai::ptr);
             delete[]target;
             delete[]prompt;
             delete[]file_name;
             exit(1);
-        }*/
+        }
     }
 };
 
@@ -174,38 +174,21 @@ public:
             delete[]prompt;
             delete[]file_name;
         }
-        /*else{
+        else{
             ai_free(Math_ai::ptr);
             delete[]target;
             delete[]prompt;
             delete[]file_name;
             exit(1);
-        }*/
+        }
     }
 };
 
 AI* Parser::parse(int argc, char**argv){
-    /*if(argc == 3){
-        int flag = 0;
-        if(argv[1][0] == '-') flag = 1;
-        else flag = 2;
-        if(flag == 1){
-            Chat_ai* k{};
-            k->prompt = argv[2];
-            return k;
-        }
-        else if(flag == 2){
-            Chat_ai* k{};
-            k->prompt = argv[1];
-            return k;
-        }
-        else exit(1);
-    }*/
-    if(true){
         int flag1 = 0;//记录接入接口的位置
         int type1 = 0;//0代表math，1代表draw，2代表chatgpt
         int flag2 = 0;//记录文件输入的位置
-        bool if_file = 0;
+        bool if_file = 0;//记录是否有文件输出
         for(int i = 1; i <= argc - 1; i++){
             if(argv[i][0] == '-' && argv[i][1] == '-' && argv[i][2] == 'd'){
                 flag1 = i;
@@ -225,7 +208,7 @@ AI* Parser::parse(int argc, char**argv){
             }
         }
         if(type1 == 1){
-            Draw_ai* k{};
+            Draw_ai* k = new Draw_ai;
             k->prompt = argv[flag1 + 1];
             if(if_file){
                 k->file_name = argv[flag2 + 1];
@@ -234,7 +217,7 @@ AI* Parser::parse(int argc, char**argv){
             return k;
         }
         if(type1 == 0){
-            Math_ai* k{};
+            Math_ai* k = new Math_ai;
             k->prompt = argv[flag1 + 1];
             if(if_file){
                 k->file_name = argv[flag2 + 1];
@@ -243,7 +226,7 @@ AI* Parser::parse(int argc, char**argv){
             return k;
         }
         if(type1 == 2){
-            Chat_ai* k{};
+            Chat_ai* k = new Chat_ai;
             k->prompt = argv[flag1 + 1];
             if(if_file){
                 k->file_name = argv[flag2 + 1];
@@ -251,8 +234,6 @@ AI* Parser::parse(int argc, char**argv){
             }
             return k;
         }
-    }
-    else exit(1);
 }
 
 #endif
