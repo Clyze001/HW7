@@ -199,7 +199,7 @@ AI* Parser::parse(int argc, char**argv){
                 type1 = 2;
             }
         }
-        if(type1 == 1){
+        if(type1 == 1 && flag1 != 0){
             Draw_ai* k = new Draw_ai;
             k->prompt = argv[flag1 + 1];
             if(if_file){
@@ -208,7 +208,7 @@ AI* Parser::parse(int argc, char**argv){
             }
             return k;
         }
-        if(type1 == 0){
+        else if(type1 == 0 && flag1 != 0){
             Math_ai* k = new Math_ai;
             k->prompt = argv[flag1 + 1];
             if(if_file){
@@ -217,7 +217,7 @@ AI* Parser::parse(int argc, char**argv){
             }
             return k;
         }
-        if(type1 == 2){
+        else if(type1 == 2 && flag1 != 0){
             Chat_ai* k = new Chat_ai;
             k->prompt = argv[flag1 + 1];
             if(if_file){
@@ -226,6 +226,7 @@ AI* Parser::parse(int argc, char**argv){
             }
             return k;
         }
+        else exit(1);
 }
 
 #endif
